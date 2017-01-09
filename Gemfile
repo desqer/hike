@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', github: 'activeadmin'
+gem 'enumerate_it'
 
 group :development, :test do
   gem 'byebug', platform: :mri
