@@ -1,0 +1,4 @@
+john_ebook:
+  lead: john
+  list: ebook
+  status: "active"

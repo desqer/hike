@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   root to: "admin/dashboard#index"
+
+  resources :subscriptions, only: [:create]
 end
