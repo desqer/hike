@@ -2,9 +2,9 @@ class Lead < ApplicationRecord
   extend CommonScopes
 
   has_many :subscriptions, dependent: :destroy
-  has_many :lists, -> { where(status: SubscriptionStatus::ACTIVE) }, through: :subscriptions
+  has_many :lists, -> { merge(Subscription.active) }, through: :subscriptions
 
   def to_s
-    name
+    email
   end
 end
