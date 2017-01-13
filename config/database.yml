@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: localhost
   database: hike_production
   username: hike
   password: <%= ENV['HIKE_DATABASE_PASSWORD'] %>
