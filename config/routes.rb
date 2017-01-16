@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   root to: "admin/dashboard#index"
 
-  resources :subscriptions, only: [:create]
+  namespace :api do
+    resources :subscriptions, only: [:create]
+  end
 end

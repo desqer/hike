@@ -1,4 +1,4 @@
-class SubscriptionsController < ApiController
+class API::SubscriptionsController < APIController
   ##
   # Creates a new subscription for a lead
   #

@@ -1,9 +1,9 @@
 require "test_helper"
 
-class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
+class API::SubscriptionsControllerTest < ActionDispatch::IntegrationTest
   test "success" do
     list = lists(:ebook)
-    post subscriptions_url, params: subscription_params(name: "John", email: "john@doe.com", list_id: list.id)
+    post api_subscriptions_url, params: subscription_params(name: "John", email: "john@doe.com", list_id: list.id)
 
     assert JSON(@response.body)["data"]
     assert_response :ok
@@ -11,7 +11,7 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
 
   test "error" do
     list = lists(:ebook)
-    post subscriptions_url, params: subscription_params(list_id: list.id)
+    post api_subscriptions_url, params: subscription_params(list_id: list.id)
 
     assert JSON(@response.body)["errors"]
     assert_response :unprocessable_entity
