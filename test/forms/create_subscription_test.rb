@@ -2,16 +2,16 @@ require "test_helper"
 
 class CreateSubscriptionTest < ActiveSupport::TestCase
   test "raises exception when list is not found" do
-    form = CreateSubscription.new(name: "John", email: "john@doe.com", list_id: nil)
+    form = CreateSubscription.new(name: "John", email: "john@doe.com", list_id: "123")
     assert_raises(ActiveRecord::RecordNotFound) { form.save }
   end
 
-  test "does not save when name is empty" do
+  test "does not save when list_id is empty" do
     list = lists(:ebook)
-    form = CreateSubscription.new(name: "", email: "john@doe.com", list_id: list.id)
+    form = CreateSubscription.new(email: "john@doe.com", list_id: "")
 
     refute form.save
-    assert form.error_messages.include?("Name can't be blank")
+    assert form.error_messages.include?("List can't be blank")
   end
 
   test "does not save when email is empty" do
@@ -35,6 +35,21 @@ class CreateSubscriptionTest < ActiveSupport::TestCase
     form = CreateSubscription.new(name: "John", email: "john@doe.com", list_id: list.id)
 
     assert form.save
-    assert_equal form.data, { name: "John", email: "john@doe.com" }
+    assert_equal form.data, { email: "john@doe.com", list_id: list.id }
+  end
+
+  test "does not generate success_redirect without redirect_url" do
+    form = CreateSubscription.new(redirect_url: "")
+
+    assert_nil form.success_redirect
+  end
+
+  test "adds utm params to success_redirect" do
+    form = CreateSubscription.new(redirect_url: "http://example.com")
+
+    assert form.success_redirect =~ %r{http://example.com}
+    assert form.success_redirect =~ %r{utm_source}
+    assert form.success_redirect =~ %r{utm_medium}
+    assert form.success_redirect =~ %r{utm_campaign}
   end
 end

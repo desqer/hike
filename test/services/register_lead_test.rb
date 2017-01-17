@@ -20,4 +20,13 @@ class RegisterLeadTest < ActiveSupport::TestCase
     assert_equal lead.name, john.name
     assert_equal lead.email, john.email
   end
+
+  test "updates lead name when already exists" do
+    john = leads(:john)
+
+    lead = RegisterLead.run("João", "john@doe.com")
+
+    assert_equal lead.name, "João"
+    assert_equal lead.email, john.email
+  end
 end

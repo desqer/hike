@@ -9,6 +9,7 @@ class RegisterLead
   end
 
   def run
+    lead.name = name if name.present?
     lead.tap(&:save!)
   end
 
@@ -17,6 +18,6 @@ class RegisterLead
   attr_reader :name, :email
 
   def lead
-    Lead.find_or_initialize_by(name: name, email: email)
+    @lead ||= Lead.find_or_initialize_by(email: email)
   end
 end

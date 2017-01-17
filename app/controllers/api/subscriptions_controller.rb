@@ -2,13 +2,14 @@ class API::SubscriptionsController < APIController
   ##
   # Creates a new subscription for a lead
   #
-  #   POST /subscriptions
+  #   POST /api/subscriptions
   #
   #   {
   #     data: {
   #       name: "John",
   #       email: "john@doe.com",
-  #       list_id: "ffbf67e8-722f-4473-ac3a-3cea5ac6b061"
+  #       list_id: "ffbf67e8-722f-4473-ac3a-3cea5ac6b061",
+  #       redirect_url: "http://example.com/thank_you"
   #     }
   #   }
   #
@@ -20,6 +21,8 @@ class API::SubscriptionsController < APIController
     form = CreateSubscription.new(params[:data])
 
     if form.save
+      redirect_to form.success_redirect and return if form.success_redirect
+
       render json: { data: form.data }, status: :ok
     else
       render json: { errors: form.error_messages }, status: :unprocessable_entity
