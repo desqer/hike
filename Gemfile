@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'liquid', '~> 4.0'
 
 gem 'devise'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'

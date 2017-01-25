@@ -2,3 +2,8 @@ john_ebook:
   lead: john
   list: ebook
   status: "active"
+
+john_newsletter:
+  lead: john
+  list: newsletter
+  status: "pending"
