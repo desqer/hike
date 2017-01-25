@@ -15,8 +15,8 @@ class CreateSubscriptionForm
     return unless valid?
 
     transaction do
-      lead = RegisterLead.run(name, email)
-      SubscribeLead.run(lead, list)
+      lead = RegisterLeadService.run(name, email)
+      SubscribeLeadService.run(lead, list)
     end
   end
 

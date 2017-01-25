@@ -1,4 +1,4 @@
-class SubscribeLead
+class SubscribeLeadService
   def self.run(*args)
     new(*args).run
   end

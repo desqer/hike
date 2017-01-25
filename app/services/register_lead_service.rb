@@ -1,4 +1,4 @@
-class RegisterLead
+class RegisterLeadService
   def self.run(*args)
     new(*args).run
   end

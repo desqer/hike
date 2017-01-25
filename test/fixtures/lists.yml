@@ -1,6 +1,9 @@
 ebook:
   name: "Ebook list"
 
+prelaunch:
+  name: "Prelaunch list"
+
 newsletter:
   name: "Newsletter list"
   email_template: "Olá {{ lead.name }}, bem vindo à nossa lista de news!"
