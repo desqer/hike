@@ -1,4 +1,4 @@
-class CreateSubscription
+class CreateSubscriptionForm
   include ActiveModel::Validations
 
   validates :email, :list_id, presence: true

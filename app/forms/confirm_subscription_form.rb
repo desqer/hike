@@ -1,4 +1,4 @@
-class ConfirmSubscription
+class ConfirmSubscriptionForm
   def initialize(params)
     @subscription_id = params[:id]
     @redirect_url = params[:redirect_url]

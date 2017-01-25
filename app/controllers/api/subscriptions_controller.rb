@@ -18,7 +18,7 @@ class API::SubscriptionsController < APIController
   # An error is raised if the list is not found.
   #
   def create
-    form = CreateSubscription.new(params[:data])
+    form = CreateSubscriptionForm.new(params[:data])
 
     if form.save
       redirect_to form.success_redirect and return if form.success_redirect

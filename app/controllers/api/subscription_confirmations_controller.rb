@@ -12,7 +12,7 @@ class API::SubscriptionConfirmationsController < APIController
   # An error is raised if the subscription is not found.
   #
   def create
-    form = ConfirmSubscription.new(params)
+    form = ConfirmSubscriptionForm.new(params)
 
     form.save
 
