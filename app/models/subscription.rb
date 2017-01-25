@@ -9,6 +9,14 @@ class Subscription < ApplicationRecord
   delegate :name, :email, to: :lead, prefix: true
   delegate :name, to: :list, prefix: true
 
+  def activate!
+    active! and save!
+  end
+
+  def deactivate!
+    canceled! and save!
+  end
+
   def to_s
     "#{lead_name} on #{list_name}"
   end
