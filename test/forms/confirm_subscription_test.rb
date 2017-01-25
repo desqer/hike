@@ -16,7 +16,8 @@ class ConfirmSubscriptionTest < ActiveSupport::TestCase
   end
 
   test "does not generate success_redirect without redirect_url" do
-    form = ConfirmSubscription.new(redirect_url: "")
+    subscription = subscriptions(:john_ebook)
+    form = ConfirmSubscription.new(id: subscription.id, redirect_url: "")
 
     assert_nil form.success_redirect
   end

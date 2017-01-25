@@ -9,7 +9,7 @@ class ConfirmSubscription
   end
 
   def success_redirect
-    add_utm_params redirect_url if redirect_url.present?
+    AddUTMService.run(redirect_url, source: "hike", medium: "confirmation", campaign: subscription.list_id)
   end
 
   private
@@ -18,17 +18,5 @@ class ConfirmSubscription
 
   def subscription
     Subscription.find(subscription_id)
-  end
-
-  def add_utm_params(url)
-    url = URI(url)
-
-    query = URI.decode_www_form String(url.query)
-    query << ["utm_source", "hike"]
-    query << ["utm_medium", "confirmation"]
-    query << ["utm_campaign", subscription.list_id]
-
-    url.query = URI.encode_www_form query
-    url.to_s
   end
 end

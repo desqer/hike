@@ -21,7 +21,7 @@ class CreateSubscription
   end
 
   def success_redirect
-    add_utm_params redirect_url if redirect_url.present?
+    AddUTMService.run(redirect_url, source: "hike", medium: "subscription", campaign: list_id)
   end
 
   def error_messages
@@ -42,17 +42,5 @@ class CreateSubscription
 
   def transaction(&block)
     ActiveRecord::Base.transaction(&block)
-  end
-
-  def add_utm_params(url)
-    url = URI(url)
-
-    query = URI.decode_www_form String(url.query)
-    query << ["utm_source", "hike"]
-    query << ["utm_medium", "subscription"]
-    query << ["utm_campaign", list_id]
-
-    url.query = URI.encode_www_form query
-    url.to_s
   end
 end
