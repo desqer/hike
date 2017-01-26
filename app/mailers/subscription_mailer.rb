@@ -1,6 +1,6 @@
 class SubscriptionMailer < ApplicationMailer
-  def response_email(subscription)
-    renderer = SubscriptionMailRenderer.new(subscription)
+  def confirmation_email(subscription, redirect_url)
+    renderer = SubscriptionMailRenderer.new(subscription, redirect_url)
 
     mail to: subscription.lead_email,
          subject: 'Obrigado ;)',

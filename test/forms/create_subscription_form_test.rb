@@ -34,7 +34,10 @@ class CreateSubscriptionFormTest < ActiveSupport::TestCase
     list = lists(:ebook)
     form = CreateSubscriptionForm.new(name: "John", email: "john@doe.com", list_id: list.id)
 
-    assert form.save
+    assert_difference -> { ActionMailer::Base.deliveries.count } do
+      assert form.save
+    end
+
     assert_equal form.data, { email: "john@doe.com", list_id: list.id }
   end
 

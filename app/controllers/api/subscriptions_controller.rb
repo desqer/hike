@@ -9,7 +9,8 @@ class API::SubscriptionsController < APIController
   #       name: "John",
   #       email: "john@doe.com",
   #       list_id: "ffbf67e8-722f-4473-ac3a-3cea5ac6b061",
-  #       redirect_url: "http://example.com/thank_you"
+  #       redirect_url: "http://example.com/thank_you",
+  #       confirm_redirect_url: "http://example.com/confirmed"
   #     }
   #   }
   #
