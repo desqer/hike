@@ -1,5 +1,6 @@
 ebook:
   name: "Ebook list"
+  attachment: "attachment.txt"
 
 prelaunch:
   name: "Prelaunch list"

@@ -15,6 +15,20 @@ class ConfirmSubscriptionFormTest < ActiveSupport::TestCase
     assert_equal subscription.status, SubscriptionStatus::ACTIVE
   end
 
+  test "does not provide attachment without file" do
+    subscription = subscriptions(:john_newsletter)
+    form = ConfirmSubscriptionForm.new(id: subscription.id, redirect_url: "http://example.com")
+
+    assert_nil form.attachment
+  end
+
+  test "provides attachment with file" do
+    subscription = subscriptions(:john_ebook)
+    form = ConfirmSubscriptionForm.new(id: subscription.id, redirect_url: "http://example.com")
+
+    assert form.attachment
+  end
+
   test "does not generate success_redirect without redirect_url" do
     subscription = subscriptions(:john_ebook)
     form = ConfirmSubscriptionForm.new(id: subscription.id, redirect_url: "")
