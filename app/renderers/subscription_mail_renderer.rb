@@ -1,6 +1,10 @@
 class SubscriptionMailRenderer
   include Rails.application.routes.url_helpers
 
+  def self.call(*args)
+    new(*args).call
+  end
+
   attr_reader :subscription, :redirect_url
 
   delegate :lead, :list, to: :subscription

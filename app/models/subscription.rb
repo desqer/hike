@@ -7,7 +7,7 @@ class Subscription < ApplicationRecord
   belongs_to :list
 
   delegate :name, :email, to: :lead, prefix: true
-  delegate :name, :attachment?, :attachment_path, to: :list, prefix: true
+  delegate :name, :attachment?, :attachment_path, :email_from, :email_subject, to: :list, prefix: true
 
   def activate!
     active! and save!

@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'hello@desqer.com'
+  default from: 'Desqer <dev@desqer.com>'
+
   layout 'mailer'
 end
