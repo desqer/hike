@@ -22,7 +22,7 @@ class CreateSubscriptionForm
       SubscribeLeadService.run(lead, list)
     end
 
-    SubscriptionMailer.confirmation_email(subscription, confirm_redirect_url).deliver_now
+    SubscriptionMailer.confirmation_email(subscription, confirm_redirect_url).deliver_later
   end
 
   def success_redirect

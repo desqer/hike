@@ -7,4 +7,6 @@ prelaunch:
 
 newsletter:
   name: "Newsletter list"
+  email_from: "foo@example.com"
+  email_subject: "Test"
   email_template: "Olá {{ lead.name }}! Clique em {{ subscription.confirmation_link }} para confirmar."
